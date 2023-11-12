@@ -5,8 +5,8 @@ import { getRandomInt, addZero } from '../util';
 import slot from '../assets/slot.png';
 import CircularProgress from '@mui/material/CircularProgress';
 
-const maxTime = 2000;
-const minTime = 1000;
+const maxTime = 6000;
+const minTime = 2000;
 
 export default function SlotPage({ participants = [], giftList = [], onChangePart, onChangeGift }) {
   const [isRaffling, setIsRaffling] = useState(false);

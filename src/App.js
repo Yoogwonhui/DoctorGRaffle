@@ -47,8 +47,8 @@ function App() {
   // 상품 리스트
   const [giftList, setGiftList] = useState([
     { name: 'LG 스탠바이미', count: 3, img: 'stan', isAwarded: false, type: 1 },
-    { name: 'LG 스타일러', count: 3, img: 'stan', isAwarded: false, type: 1 },
-    { name: 'LG 로봇청소기', count: 3, img: 'stan', isAwarded: false, type: 1 },
+    { name: 'LG 스타일러', count: 3, img: 'styler', isAwarded: false, type: 1 },
+    { name: 'LG 로봇청소기', count: 3, img: 'cleaner', isAwarded: false, type: 1 },
     { name: '다이슨 에어랩', count: 3, img: 'stan', isAwarded: false, type: 1 },
     { name: '다이슨 공기청정기', count: 3, img: 'stan', isAwarded: false, type: 1 },
     { name: '네스프레소 커피머신', count: 3, img: 'stan', isAwarded: false, type: 1 },
