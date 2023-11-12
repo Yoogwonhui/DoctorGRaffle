@@ -34,7 +34,7 @@ export default function SlotPage({ participants = [], giftList = [], onChangePar
     },
     raffleButton: {
       position: 'absolute',
-      bottom: '10%',
+      bottom: '5%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
       backgroundColor: 'orange',

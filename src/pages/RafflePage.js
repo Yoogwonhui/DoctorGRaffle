@@ -51,7 +51,7 @@ export default function RafflePage({
     },
     raffleButton: {
       position: 'absolute',
-      bottom: '10%',
+      bottom: '5%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
       backgroundColor: 'orange',
@@ -63,18 +63,18 @@ export default function RafflePage({
     },
     raffle: {
       position: 'absolute',
-      bottom: '25%',
+      bottom: '12%',
       left: '50%',
       transform: 'translate(-50%, -0%)',
-      width: '70%',
+      width: '85%',
       clipPath: 'circle(37%)',
     },
     qus: {
       position: 'absolute',
-      bottom: '28%',
-      left: '49.5%',
+      bottom: '16%',
+      left: '49%',
       transform: 'translate(-50%, -0%)',
-      width: '10%',
+      width: '12%',
       color: 'white',
     },
     ball: {
@@ -130,7 +130,6 @@ export default function RafflePage({
         if (suffledLeftPeople[i]) raffleNumList.push(suffledLeftPeople[i]?.num);
       }
 
-      console.log(raffleNumList.map((d) => addZero(d)));
       setRaffleNums(raffleNumList.map((d) => addZero(d)));
 
       const copyP = [...participants];
