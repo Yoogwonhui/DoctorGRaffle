@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Slot from 'react-slot-machine';
 import Button from '@mui/material/Button';
-import { getRandomInt, addZero } from '../util';
-import slot from '../assets/slot.png';
+import { addZero } from '../util';
 import CircularProgress from '@mui/material/CircularProgress';
 import on from '../assets/lotteryAni.gif';
 import off from '../assets/lottery.jpg';

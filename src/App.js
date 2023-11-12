@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 import SlotPage from './pages/SlotPage';
 import RafflePage from './pages/RafflePage';
 import SettingPage from './pages/SettingPage';
 
-import Button from '@mui/material/Button';
-import Slot from 'react-slot-machine';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import CelebrationIcon from '@mui/icons-material/Celebration';
 import SettingsIcon from '@mui/icons-material/Settings';
