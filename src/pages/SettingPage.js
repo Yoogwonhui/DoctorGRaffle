@@ -1,0 +1,153 @@
+import React, { useEffect, useState } from 'react';
+import Checkbox from '@mui/material/Checkbox';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import IconButton from '@mui/material/IconButton';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+export default function SettingPage({
+  participants = [],
+  giftList = [],
+  onChangePart,
+  onChangeGift,
+}) {
+  const styles = {
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      flexDirection: 'column',
+      // backgroundColor: 'grey',
+      overflow: 'auto',
+      color: 'white',
+      padding: 20,
+    },
+  };
+
+  const changeForm = (arr) => {
+    let result = [];
+
+    let semi = [];
+
+    for (let i = 0; i < arr.length; i++) {
+      semi.push(arr[i]);
+      if ((i + 1) % 20 === 0) {
+        result.push(semi);
+        semi = [];
+      }
+    }
+
+    return result;
+  };
+
+  return (
+    <div style={styles.container}>
+      <div style={{ display: 'flex', alignItems: 'center', padding: 5 }}>
+        <IconButton
+          onClick={() => {
+            const copy = [...participants];
+            copy.pop();
+            onChangePart(copy);
+          }}
+          style={{ color: 'white' }}
+        >
+          <RemoveCircleOutlineIcon />
+        </IconButton>
+
+        <div
+          style={{ fontSize: 20, fontWeight: 'bold', paddingBottom: 4 }}
+        >{`직원수 ( ${participants.length}명 )`}</div>
+
+        <IconButton
+          onClick={() => {
+            const copy = [...participants];
+            copy.push({ num: participants.length, isAwarded: false });
+            onChangePart(copy);
+          }}
+          style={{ color: 'white' }}
+        >
+          <AddCircleOutlineIcon />
+        </IconButton>
+      </div>
+
+      <div
+        style={{ fontSize: 20, fontWeight: 'bold', paddingLeft: 10, paddingBottom: 4 }}
+      >{`추첨 완료 : ${participants.filter((d) => d.isAwarded).length}명`}</div>
+
+      <div style={{ overflow: 'auto', paddingBottom: 10 }}>
+        {changeForm(participants).map((list, index) => (
+          <div key={index} style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+            {list.map((d, i) => (
+              <FormControlLabel
+                style={{ padding: 0 }}
+                key={i}
+                value="start"
+                control={<Checkbox style={{ color: 'white' }} checked={d.isAwarded} />}
+                label={d.num}
+                labelPlacement="start"
+                onChange={(e) => {
+                  const copy = [...participants];
+                  copy[i].isAwarded = e.target.checked;
+                  onChangePart(copy);
+                }}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <div style={{ padding: 10, fontSize: 20, fontWeight: 'bold', marginTop: 20 }}>상품목록</div>
+
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {giftList.map((d, i) => (
+          <GiftCard
+            onChange={(name, value) => {
+              const copy = [...giftList];
+              copy[copy.findIndex((d) => d.name === name)].isAwarded = value;
+              onChangeGift(copy);
+            }}
+            key={i}
+            data={d}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+const GiftCard = ({ data, onChange }) => {
+  return (
+    <div
+      style={{
+        margin: 10,
+        padding: 10,
+        paddingRight: 20,
+        border: '1px solid white',
+        borderRadius: 8,
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <Checkbox
+          style={{ color: 'white' }}
+          checked={data.isAwarded}
+          onChange={(e) => {
+            onChange(data.name, e.target.checked);
+          }}
+        />
+        <div
+          onClick={() => {
+            onChange(data.name, !data.isAwarded);
+          }}
+          style={{ paddingBottom: 4, cursor: 'pointer' }}
+        >
+          {data.name}
+        </div>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div style={{ paddingLeft: 10, marginRight: 20 }}>수량 : </div>
+        <div>{data.count}</div>
+      </div>
+    </div>
+  );
+};

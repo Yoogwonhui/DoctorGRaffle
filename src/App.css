@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.slot {
+  font-size: 5em;
+  height: 1.5em;
+  color: white;
+  font-weight: 900;
+}
+
+.slot-item {
+  height: 100%;
+  width: 100%;
+}
