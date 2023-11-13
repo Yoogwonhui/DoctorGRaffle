@@ -88,6 +88,7 @@ function App() {
         value={tab}
         onChange={handleChange}
         indicatorColor="none"
+        style={{ minWidth: 30 }}
       >
         <Tab
           style={{ padding: 10, minWidth: 0, color: 'white' }}

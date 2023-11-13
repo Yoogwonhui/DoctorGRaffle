@@ -34,6 +34,9 @@ export default function SettingPage({
         semi = [];
       }
     }
+    if (semi.length > 0) {
+      result.push(semi);
+    }
 
     return result;
   };
@@ -59,7 +62,7 @@ export default function SettingPage({
         <IconButton
           onClick={() => {
             const copy = [...participants];
-            copy.push({ num: participants.length, isAwarded: false });
+            copy.push({ num: participants.length + 1, isAwarded: false });
             onChangePart(copy);
           }}
           style={{ color: 'white' }}
@@ -74,10 +77,10 @@ export default function SettingPage({
 
       <div style={{ overflow: 'auto', paddingBottom: 10 }}>
         {changeForm(participants).map((list, index) => (
-          <div key={index} style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+          <div key={index} style={{ display: 'flex', overflow: 'auto' }}>
             {list.map((d, i) => (
               <FormControlLabel
-                style={{ padding: 0 }}
+                style={{ padding: 0, width: '4.6%' }}
                 key={i}
                 value="start"
                 control={<Checkbox style={{ color: 'white' }} checked={d.isAwarded} />}

@@ -177,8 +177,10 @@ export default function RafflePage({
           height: '100%',
         }}
       >
-        {ShowNumList.map((d) => (
-          <div style={styles.ball}>{d}</div>
+        {ShowNumList.map((d, i) => (
+          <div key={i} style={styles.ball}>
+            {d}
+          </div>
         ))}
       </div>
 
