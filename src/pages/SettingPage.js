@@ -99,29 +99,59 @@ export default function SettingPage({
 
       <div style={{ padding: 10, fontSize: 20, fontWeight: 'bold', marginTop: 20 }}>상품목록</div>
 
+      <div style={{ padding: 10, fontWeight: 'bold' }}>{`슬롯 상품 ( 0 ~ 3 개 가능 )`}</div>
+
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-        {giftList.map((d, i) => (
-          <GiftCard
-            onChange={(name, value) => {
-              const copy = [...giftList];
-              copy[copy.findIndex((d) => d.name === name)].isAwarded = value;
-              onChangeGift(copy);
-            }}
-            onChangeCount={(name, count) => {
-              const copy = [...giftList];
-              copy[copy.findIndex((d) => d.name === name)].count = count;
-              onChangeGift(copy);
-            }}
-            key={i}
-            data={d}
-          />
-        ))}
+        {giftList
+          .filter((d) => d.type === 1)
+          .map((d, i) => (
+            <GiftCard
+              type={1}
+              onChange={(name, value) => {
+                const copy = [...giftList];
+                copy[copy.findIndex((d) => d.name === name)].isAwarded = value;
+                onChangeGift(copy);
+              }}
+              onChangeCount={(name, count) => {
+                const copy = [...giftList];
+                copy[copy.findIndex((d) => d.name === name)].count = count;
+                onChangeGift(copy);
+              }}
+              key={i}
+              data={d}
+            />
+          ))}
+      </div>
+
+      <div style={{ borderBottom: '1px solid white', margin: '30px 10px' }}></div>
+
+      <div style={{ padding: 10, fontWeight: 'bold' }}>{`룰렛 상품`}</div>
+
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        {giftList
+          .filter((d) => d.type === 2)
+          .map((d, i) => (
+            <GiftCard
+              onChange={(name, value) => {
+                const copy = [...giftList];
+                copy[copy.findIndex((d) => d.name === name)].isAwarded = value;
+                onChangeGift(copy);
+              }}
+              onChangeCount={(name, count) => {
+                const copy = [...giftList];
+                copy[copy.findIndex((d) => d.name === name)].count = count;
+                onChangeGift(copy);
+              }}
+              key={i}
+              data={d}
+            />
+          ))}
       </div>
     </div>
   );
 }
 
-const GiftCard = ({ data, onChange, onChangeCount }) => {
+const GiftCard = ({ data, onChange, onChangeCount, type = 2 }) => {
   return (
     <div
       style={{
@@ -161,7 +191,9 @@ const GiftCard = ({ data, onChange, onChangeCount }) => {
         </IconButton>
         <div>{data.count}</div>
         <IconButton
-          onClick={() => onChangeCount(data.name, data.count + 1)}
+          onClick={() => {
+            if (type === 2 || data.count < 3) onChangeCount(data.name, data.count + 1);
+          }}
           style={{ color: 'white' }}
         >
           <AddCircleOutlineIcon />
