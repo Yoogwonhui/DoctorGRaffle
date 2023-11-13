@@ -109,6 +109,7 @@ export default function SlotPage({ participants = [], giftList = [], onChangePar
                 fontWeight: 'bold',
                 textAlign: 'center',
                 marginTop: 30,
+                whiteSpace: 'nowrap',
               }}
             >
               {`[ ${gift.name} ]`}

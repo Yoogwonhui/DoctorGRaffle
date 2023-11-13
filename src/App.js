@@ -53,7 +53,7 @@ function App() {
     { name: '다이슨 공기청정기', count: 3, img: 'stan', isAwarded: false, type: 1 },
     { name: '네스프레소 커피머신', count: 3, img: 'stan', isAwarded: false, type: 1 },
 
-    { name: '제스파 발마사지기', count: 5, img: 'stan', isAwarded: false, type: 2 },
+    { name: '알로코리아 3in1 충전기', count: 5, img: 'stan', isAwarded: false, type: 2 },
     { name: '폴로랄프로렌 머플러', count: 5, img: 'stan', isAwarded: false, type: 2 },
     { name: '디올 르 밤 핸드크림', count: 5, img: 'stan', isAwarded: false, type: 2 },
     { name: '탬버린즈 고체향수', count: 15, img: 'stan', isAwarded: false, type: 2 },

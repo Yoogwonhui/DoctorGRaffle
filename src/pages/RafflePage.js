@@ -194,7 +194,7 @@ export default function RafflePage({
                 fontSize: 40,
                 textAlign: 'center',
                 fontWeight: 'bold',
-
+                whiteSpace: 'nowrap',
                 marginTop: 30,
               }}
             >
