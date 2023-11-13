@@ -107,6 +107,11 @@ export default function SettingPage({
               copy[copy.findIndex((d) => d.name === name)].isAwarded = value;
               onChangeGift(copy);
             }}
+            onChangeCount={(name, count) => {
+              const copy = [...giftList];
+              copy[copy.findIndex((d) => d.name === name)].count = count;
+              onChangeGift(copy);
+            }}
             key={i}
             data={d}
           />
@@ -116,7 +121,7 @@ export default function SettingPage({
   );
 }
 
-const GiftCard = ({ data, onChange }) => {
+const GiftCard = ({ data, onChange, onChangeCount }) => {
   return (
     <div
       style={{
@@ -146,7 +151,21 @@ const GiftCard = ({ data, onChange }) => {
       </div>
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <div style={{ paddingLeft: 10, marginRight: 20 }}>수량 : </div>
+        <IconButton
+          onClick={() => {
+            if (data.count > 0) onChangeCount(data.name, data.count - 1);
+          }}
+          style={{ color: 'white' }}
+        >
+          <RemoveCircleOutlineIcon />
+        </IconButton>
         <div>{data.count}</div>
+        <IconButton
+          onClick={() => onChangeCount(data.name, data.count + 1)}
+          style={{ color: 'white' }}
+        >
+          <AddCircleOutlineIcon />
+        </IconButton>
       </div>
     </div>
   );

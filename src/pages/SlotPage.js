@@ -66,9 +66,10 @@ export default function SlotPage({ participants = [], giftList = [], onChangePar
 
     if (suffledLeftPeople.length > 0) {
       const raffleNumList = [];
-      if (suffledLeftPeople[0]) raffleNumList.push(suffledLeftPeople[0]?.num);
-      if (suffledLeftPeople[1]) raffleNumList.push(suffledLeftPeople[1]?.num);
-      if (suffledLeftPeople[2]) raffleNumList.push(suffledLeftPeople[2]?.num);
+
+      for (let i = 0; i < gift.count; i++) {
+        if (suffledLeftPeople[i]) raffleNumList.push(suffledLeftPeople[i]?.num);
+      }
 
       setRaffleNums(raffleNumList.map((d) => addZero(d)));
 
