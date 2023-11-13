@@ -85,7 +85,7 @@ export default function SettingPage({
                 labelPlacement="start"
                 onChange={(e) => {
                   const copy = [...participants];
-                  copy[i].isAwarded = e.target.checked;
+                  copy[d.num - 1].isAwarded = e.target.checked;
                   onChangePart(copy);
                 }}
               />
