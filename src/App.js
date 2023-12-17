@@ -9,6 +9,8 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import CelebrationIcon from '@mui/icons-material/Celebration';
+import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
+import DiamondIcon from '@mui/icons-material/Diamond';
 import SettingsIcon from '@mui/icons-material/Settings';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -39,7 +41,7 @@ function App() {
 
   // 참여자 200명 , false로 세팅
   const [participants, setParticipants] = useState(
-    [...new Array(200)].map((d, index) => {
+    [...new Array(178)].map((d, index) => {
       return { num: index + 1, isAwarded: false };
     }),
   );
@@ -115,7 +117,7 @@ function App() {
       >
         <Tab
           style={{ padding: 10, minWidth: 0, color: 'white' }}
-          label={<AutoAwesomeIcon />}
+          label={<DiamondIcon />}
           {...a11yProps(0)}
         />
         <Tab
@@ -125,27 +127,57 @@ function App() {
         />
         <Tab
           style={{ padding: 10, minWidth: 0, color: 'white' }}
-          label={<SettingsIcon />}
+          label={<AutoAwesomeIcon />}
           {...a11yProps(2)}
+        />
+        <Tab
+          style={{ padding: 10, minWidth: 0, color: 'white' }}
+          label={<CardGiftcardIcon />}
+          {...a11yProps(3)}
+        />
+        <Tab
+          style={{ padding: 10, minWidth: 0, color: 'white' }}
+          label={<SettingsIcon />}
+          {...a11yProps(4)}
         />
       </Tabs>
       <TabPanel value={tab} index={0}>
-        <SlotPage
+        <Section
           participants={participants}
           giftList={giftList}
           onChangePart={(e) => setParticipants(e)}
           onChangeGift={(e) => setGiftList(e)}
+          sectionNum={1}
         />
       </TabPanel>
       <TabPanel value={tab} index={1}>
-        <RafflePage
+        <Section
           participants={participants}
           giftList={giftList}
           onChangePart={(e) => setParticipants(e)}
           onChangeGift={(e) => setGiftList(e)}
+          sectionNum={2}
         />
       </TabPanel>
       <TabPanel value={tab} index={2}>
+        <Section
+          participants={participants}
+          giftList={giftList}
+          onChangePart={(e) => setParticipants(e)}
+          onChangeGift={(e) => setGiftList(e)}
+          sectionNum={3}
+        />
+      </TabPanel>
+      <TabPanel value={tab} index={3}>
+        <Section
+          participants={participants}
+          giftList={giftList}
+          onChangePart={(e) => setParticipants(e)}
+          onChangeGift={(e) => setGiftList(e)}
+          sectionNum={4}
+        />
+      </TabPanel>
+      <TabPanel value={tab} index={4}>
         <SettingPage
           participants={participants}
           giftList={giftList}
@@ -156,5 +188,75 @@ function App() {
     </div>
   );
 }
+
+const Section = ({ participants = [], giftList = [], onChangePart, onChangeGift, sectionNum }) => {
+  const onChangeGift_ = (e) => {
+    let newGiftArr = [];
+
+    for (let i = 0; i < giftList.length; i++) {
+      const target = giftList[i];
+
+      const isFind = e.find((d) => d.name === target.name);
+
+      if (isFind) {
+        newGiftArr.push({ ...target, ...isFind });
+      } else {
+        newGiftArr.push(target);
+      }
+    }
+    onChangeGift(newGiftArr);
+  };
+
+  return (
+    <>
+      {giftList.filter((d) => d.section === sectionNum && !d.isAwarded).length > 0 ? (
+        <>
+          {giftList.filter((d) => d.section === sectionNum && !d.isAwarded)[0].type === 1 ? (
+            <SlotPage
+              participants={participants}
+              giftList={giftList.filter((d) => d.section === sectionNum)}
+              onChangePart={(e) => {
+                onChangePart(e);
+              }}
+              onChangeGift={(e) => {
+                onChangeGift_(e);
+              }}
+            />
+          ) : (
+            <RafflePage
+              participants={participants}
+              giftList={giftList.filter((d) => d.section === sectionNum)}
+              onChangePart={(e) => {
+                onChangePart(e);
+              }}
+              onChangeGift={(e) => {
+                onChangeGift_(e);
+              }}
+            />
+          )}
+        </>
+      ) : (
+        <div
+          style={{
+            color: 'white',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: 100,
+          }}
+        >
+          {sectionNum === 4
+            ? '럭키드로우가 모두 끝났습니다. 고생 많으셨습니다 ~!'
+            : sectionNum === 1
+            ? 'To be continued...'
+            : sectionNum === 2
+            ? "I'll be back..."
+            : '귿귿'}
+        </div>
+      )}
+    </>
+  );
+};
 
 export default App;

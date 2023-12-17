@@ -126,18 +126,32 @@ export default function SlotPage({ participants = [], giftList = [], onChangePar
       </div>
 
       <div style={styles.raffleContiner}>
-        <SlotComponent
-          targetNum={raffleNums && raffleNums[0] ? raffleNums[0] : '000'}
-          isTurning={isRaffling}
-        />
-        <SlotComponent
-          targetNum={raffleNums && raffleNums[1] ? raffleNums[1] : '000'}
-          isTurning={isRaffling}
-        />
-        <SlotComponent
-          targetNum={raffleNums && raffleNums[2] ? raffleNums[2] : '000'}
-          isTurning={isRaffling}
-        />
+        {gift?.count > 1 ? (
+          <>
+            <SlotComponent
+              targetNum={raffleNums && raffleNums[0] ? raffleNums[0] : '000'}
+              isTurning={isRaffling}
+            />
+            <SlotComponent
+              targetNum={raffleNums && raffleNums[1] ? raffleNums[1] : '000'}
+              isTurning={isRaffling}
+            />
+            <SlotComponent
+              targetNum={raffleNums && raffleNums[2] ? raffleNums[2] : '000'}
+              isTurning={isRaffling}
+            />
+          </>
+        ) : (
+          <>
+            <div style={{ flex: 1 }}></div>
+            <SlotComponent
+              targetNum={raffleNums && raffleNums[0] ? raffleNums[0] : '000'}
+              isTurning={isRaffling}
+              style={{ transform: 'scale(1.4)' }}
+            />
+            <div style={{ flex: 1 }}></div>
+          </>
+        )}
 
         <Button
           disabled={buttonDisabled}
@@ -162,11 +176,20 @@ export default function SlotPage({ participants = [], giftList = [], onChangePar
 }
 
 // 슬롯
-const SlotComponent = ({ targetNum, isTurning = false }) => {
+const SlotComponent = ({ targetNum, isTurning = false, style }) => {
   const list = [0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   return (
-    <div style={{ display: 'flex', flex: 1, margin: 40, marginTop: 200, position: 'relative' }}>
+    <div
+      style={{
+        display: 'flex',
+        flex: 1,
+        margin: 40,
+        marginTop: 200,
+        position: 'relative',
+        ...style,
+      }}
+    >
       <img
         style={{ width: 400, height: 500, position: 'absolute', zIndex: 10 }}
         src={slot}

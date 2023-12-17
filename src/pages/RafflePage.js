@@ -111,8 +111,8 @@ export default function RafflePage({
       setIsShowQ(true);
       setTimeout(() => {
         setIsShowQ(false);
-      }, 2300);
-    }, 5200);
+      }, 2500);
+    }, 5000);
 
     setButtonDisabled(true);
     setTimeout(() => {
