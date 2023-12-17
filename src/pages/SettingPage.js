@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import IconButton from '@mui/material/IconButton';
@@ -15,12 +15,13 @@ export default function SettingPage({
       display: 'flex',
       flexWrap: 'wrap',
       flexDirection: 'column',
-      // backgroundColor: 'grey',
-      overflow: 'auto',
       color: 'white',
       padding: 20,
+      overflow: 'auto',
     },
   };
+
+  const [partInput, setPartInput] = useState('');
 
   const changeForm = (arr) => {
     let result = [];
@@ -97,24 +98,35 @@ export default function SettingPage({
         ))}
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div style={{ display: 'flex', alignItems: 'center', marginTop: 40, marginBottom: 20 }}>
         <input
+          value={partInput}
+          onChange={(e) => setPartInput(e.target.value)}
           style={{
             border: '1px solid white',
-            backgroundColor: 'black',
-            color: 'white',
-            width: 120,
+            paddingLeft: '10px',
+            width: '90%',
             height: 40,
             padding: 0,
           }}
-        ></input>
+        />
 
         <button
+          onClick={() => {
+            const inputArr = partInput.split(',').map((d) => d * 1);
+            if (partInput.includes(',')) {
+              let pArr = [...participants].map((d) => {
+                return { ...d, isAwarded: inputArr.includes(d.num) };
+              });
+              onChangePart(pArr);
+            }
+            setPartInput('');
+          }}
           style={{
             border: '1px solid white',
-            backgroundColor: 'black',
+            backgroundColor: 'red',
             color: 'white',
-            width: 120,
+            width: '10%',
             height: 40,
           }}
         >

@@ -22,6 +22,7 @@ export default function SlotPage({ participants = [], giftList = [], onChangePar
       display: 'flex',
       width: '100%',
       height: '100%',
+      overflow: 'hidden',
     },
     imgContainer: {
       flex: 1,
