@@ -101,7 +101,7 @@ function App() {
       height: '100vh',
       backgroundColor: 'black',
       display: 'flex',
-      overflow: 'auto',
+      overflow: 'hidden',
     },
   };
 

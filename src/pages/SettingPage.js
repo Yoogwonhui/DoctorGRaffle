@@ -97,6 +97,31 @@ export default function SettingPage({
         ))}
       </div>
 
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <input
+          style={{
+            border: '1px solid white',
+            backgroundColor: 'black',
+            color: 'white',
+            width: 120,
+            height: 40,
+            padding: 0,
+          }}
+        ></input>
+
+        <button
+          style={{
+            border: '1px solid white',
+            backgroundColor: 'black',
+            color: 'white',
+            width: 120,
+            height: 40,
+          }}
+        >
+          적용
+        </button>
+      </div>
+
       <div style={{ padding: 10, fontSize: 20, fontWeight: 'bold', marginTop: 20 }}>상품목록</div>
 
       <div style={{ padding: 10, fontWeight: 'bold' }}>{`슬롯 상품 ( 0 ~ 3 개 가능 )`}</div>
