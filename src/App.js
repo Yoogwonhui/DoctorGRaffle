@@ -46,24 +46,47 @@ function App() {
 
   // 상품 리스트
   const [giftList, setGiftList] = useState([
-    { name: 'LG 스탠바이미', count: 3, img: 'stan', isAwarded: false, type: 1 },
-    { name: 'LG 스타일러', count: 3, img: 'styler', isAwarded: false, type: 1 },
-    { name: 'LG 로봇청소기', count: 3, img: 'cleaner', isAwarded: false, type: 1 },
-    { name: '다이슨 에어랩', count: 3, img: 'stan', isAwarded: false, type: 1 },
-    { name: '다이슨 공기청정기', count: 3, img: 'stan', isAwarded: false, type: 1 },
-    { name: '네스프레소 커피머신', count: 3, img: 'stan', isAwarded: false, type: 1 },
-
-    { name: '알로코리아 3in1 충전기', count: 5, img: 'stan', isAwarded: false, type: 2 },
-    { name: '폴로랄프로렌 머플러', count: 5, img: 'stan', isAwarded: false, type: 2 },
-    { name: '디올 르 밤 핸드크림', count: 5, img: 'stan', isAwarded: false, type: 2 },
-    { name: '탬버린즈 고체향수', count: 15, img: 'stan', isAwarded: false, type: 2 },
-    { name: '보스톤 와인고블렛', count: 15, img: 'stan', isAwarded: false, type: 2 },
-    { name: '렉슨미나 조명 S', count: 15, img: 'stan', isAwarded: false, type: 2 },
-    { name: '알로코리아 3in1 충전기', count: 20, img: 'stan', isAwarded: false, type: 2 },
-    { name: '칼리아 보조배터리', count: 20, img: 'stan', isAwarded: false, type: 2 },
-    { name: '조말론 코롱 9ml', count: 20, img: 'stan', isAwarded: false, type: 2 },
-    { name: '스타벅스 기프트카드', count: 30, img: 'stan', isAwarded: false, type: 2 },
-    { name: '춘식이 페이스쿠션', count: 25, img: 'stan', isAwarded: false, type: 2 },
+    { name: '배민 5만원권', count: 15, img: 'baemin', isAwarded: false, type: 2, section: 1 },
+    {
+      name: '희녹 제주편백 스프레이',
+      count: 15,
+      img: 'spray',
+      isAwarded: false,
+      type: 2,
+      section: 1,
+    },
+    { name: '다이슨 에어랩', count: 3, img: 'airlab', isAwarded: false, type: 1, section: 1 },
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    {
+      name: '레고트 텀블러(400ml)',
+      count: 30,
+      img: 'tumbler',
+      isAwarded: false,
+      type: 2,
+      section: 2,
+    },
+    {
+      name: '이솝 핸드워시&핸드밤',
+      count: 10,
+      img: 'aesop',
+      isAwarded: false,
+      type: 2,
+      section: 2,
+    },
+    { name: 'LG 스탠바이미', count: 1, img: 'stan', isAwarded: false, type: 1, section: 2 },
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    { name: '아웃백 10만원권', count: 5, img: 'outback', isAwarded: false, type: 2, section: 3 },
+    { name: '풀리오 다리마사지기', count: 5, img: 'leg', isAwarded: false, type: 2, section: 3 },
+    { name: '다이슨 공기청정기', count: 3, img: 'airclean', isAwarded: false, type: 1, section: 3 },
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    { name: '치킨 교환권', count: 20, img: 'chicken', isAwarded: false, type: 2, section: 4 },
+    { name: '명품 립밤', count: 10, img: 'lip', isAwarded: false, type: 2, section: 4 },
+    { name: '올리브영 5만원권', count: 20, img: 'olive', isAwarded: false, type: 2, section: 4 },
+    { name: '아크네 머플러', count: 6, img: 'acne', isAwarded: false, type: 2, section: 4 },
+    { name: '네스프레소 커피머신', count: 3, img: 'coffie', isAwarded: false, type: 1, section: 4 },
+    { name: 'LG 로봇청소기', count: 1, img: 'lobot', isAwarded: false, type: 1, section: 4 },
+    { name: '춘식이 페이스쿠션', count: 30, img: 'cushion', isAwarded: false, type: 2, section: 4 },
+    { name: 'LG 스타일러', count: 1, img: 'styler', isAwarded: false, type: 1, section: 4 },
   ]);
 
   const handleChange = (event, newValue) => {
