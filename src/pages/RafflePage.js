@@ -189,20 +189,21 @@ export default function RafflePage({
           <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
             <div
               style={{
-                width: '100%',
                 color: 'white',
-                fontSize: 40,
+                fontSize: 70,
                 textAlign: 'center',
                 fontWeight: 'bold',
                 whiteSpace: 'nowrap',
                 marginTop: 30,
+                marginLeft: 50,
+                position: 'absolute',
               }}
             >
-              {`[ ${gift.name} ]`}
+              {`${gift.name}`}
             </div>
             <div style={{ display: 'flex', flexGrow: 1, alignItems: 'center' }}>
               <img
-                style={{ width: '100%' }}
+                style={{ width: '100%', marginLeft: 30 }}
                 src={process.env.PUBLIC_URL + `/img/${gift.img}.png`}
                 alt=""
               />
