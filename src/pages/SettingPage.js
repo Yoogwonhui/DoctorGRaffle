@@ -98,20 +98,39 @@ export default function SettingPage({
         ))}
       </div>
 
+      <div
+        style={{
+          marginTop: 20,
+          backgroundColor: 'white',
+          color: 'black',
+          paddingLeft: 10,
+          height: 40,
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        {participants
+          .filter((d) => d.isAwarded)
+          .map((d) => d.num)
+          .join(',')}
+      </div>
+
       <div style={{ display: 'flex', alignItems: 'center', marginTop: 40, marginBottom: 20 }}>
         <input
+          placeholder="ex ) 1, 2, 3, 4, 5"
           value={partInput}
           onChange={(e) => setPartInput(e.target.value)}
           style={{
             border: '1px solid white',
-            paddingLeft: '10px',
             width: '90%',
             height: 40,
             padding: 0,
+            paddingLeft: 10,
           }}
         />
 
         <button
+          disabled={!partInput.includes(',')}
           onClick={() => {
             const inputArr = partInput.split(',').map((d) => d * 1);
             if (partInput.includes(',')) {
@@ -124,7 +143,7 @@ export default function SettingPage({
           }}
           style={{
             border: '1px solid white',
-            backgroundColor: 'red',
+            backgroundColor: !partInput.includes(',') ? 'rgba(100,100,100,0.3)' : 'red',
             color: 'white',
             width: '10%',
             height: 40,
