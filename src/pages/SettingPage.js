@@ -81,7 +81,7 @@ export default function SettingPage({
           <div key={index} style={{ display: 'flex', overflow: 'auto' }}>
             {list.map((d, i) => (
               <FormControlLabel
-                style={{ padding: 0, width: '4.6%' }}
+                style={{ padding: 0, width: '4.5%' }}
                 key={i}
                 value="start"
                 control={<Checkbox style={{ color: 'white' }} checked={d.isAwarded} />}
@@ -105,8 +105,9 @@ export default function SettingPage({
           color: 'black',
           paddingLeft: 10,
           height: 40,
-          display: 'flex',
-          alignItems: 'center',
+
+          width: '80%',
+          overflow: 'scroll',
         }}
       >
         {participants
@@ -122,7 +123,7 @@ export default function SettingPage({
           onChange={(e) => setPartInput(e.target.value)}
           style={{
             border: '1px solid white',
-            width: '90%',
+            width: '70%',
             height: 40,
             padding: 0,
             paddingLeft: 10,

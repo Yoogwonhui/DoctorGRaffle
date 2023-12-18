@@ -246,13 +246,18 @@ const Section = ({ participants = [], giftList = [], onChangePart, onChangeGift,
             fontSize: 100,
           }}
         >
-          {sectionNum === 4
-            ? '럭키드로우가 모두 끝났습니다. 고생 많으셨습니다 ~!'
-            : sectionNum === 1
-            ? 'To be continued...'
-            : sectionNum === 2
-            ? "I'll be back..."
-            : '귿귿'}
+          {sectionNum === 4 ? (
+            <div>
+              <div>럭키드로우가 모두 끝났습니다.</div>
+              <div>고생 많으셨습니다 ~!</div>
+            </div>
+          ) : sectionNum === 1 ? (
+            'To be continued...'
+          ) : sectionNum === 2 ? (
+            "I'll be back..."
+          ) : (
+            'To be continued...'
+          )}
         </div>
       )}
     </>
