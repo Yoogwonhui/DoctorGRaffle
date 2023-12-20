@@ -41,7 +41,7 @@ function App() {
 
   // 참여자 200명 , false로 세팅
   const [participants, setParticipants] = useState(
-    [...new Array(178)].map((d, index) => {
+    [...new Array(185)].map((d, index) => {
       return { num: index + 1, isAwarded: false };
     }),
   );
@@ -87,7 +87,7 @@ function App() {
     { name: '아크네 머플러', count: 6, img: 'acne', isAwarded: false, type: 2, section: 4 },
     { name: '네스프레소 커피머신', count: 3, img: 'coffie', isAwarded: false, type: 1, section: 4 },
     { name: 'LG 로봇청소기', count: 1, img: 'lobot', isAwarded: false, type: 1, section: 4 },
-    { name: '춘식이 페이스쿠션', count: 30, img: 'cushion', isAwarded: false, type: 2, section: 4 },
+    { name: '춘식이 페이스쿠션', count: 31, img: 'cushion', isAwarded: false, type: 2, section: 4 },
     { name: 'LG 스타일러', count: 1, img: 'styler', isAwarded: false, type: 1, section: 4 },
   ]);
 
@@ -246,18 +246,13 @@ const Section = ({ participants = [], giftList = [], onChangePart, onChangeGift,
             fontSize: 100,
           }}
         >
-          {sectionNum === 4 ? (
-            <div>
-              <div>럭키드로우가 모두 끝났습니다.</div>
-              <div>고생 많으셨습니다 ~!</div>
-            </div>
-          ) : sectionNum === 1 ? (
-            'To be continued...'
-          ) : sectionNum === 2 ? (
-            "I'll be back..."
-          ) : (
-            'To be continued...'
-          )}
+          {sectionNum === 4
+            ? ''
+            : sectionNum === 1
+            ? 'To be continued...'
+            : sectionNum === 2
+            ? "I'll be back..."
+            : "It's not over..."}
         </div>
       )}
     </>
