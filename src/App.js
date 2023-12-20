@@ -244,6 +244,7 @@ const Section = ({ participants = [], giftList = [], onChangePart, onChangeGift,
             alignItems: 'center',
             justifyContent: 'center',
             fontSize: 100,
+            fontWeight: 700,
           }}
         >
           {sectionNum === 4
